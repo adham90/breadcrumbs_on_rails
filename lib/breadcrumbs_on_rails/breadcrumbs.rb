@@ -78,7 +78,11 @@ module BreadcrumbsOnRails
       def render
         @elements.collect do |element|
           render_element(element)
-        end.join(@options[:separator] || " &raquo; ")
+        end.join(render_separator)
+      end
+
+      def render_separator
+        @context.content_tag(:p, @options[:separator] || " &raquo; ")
       end
 
       def render_element(element)
